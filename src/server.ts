@@ -3,6 +3,7 @@ import express, { Request, Response } from 'express';
 import multer from 'multer';
 
 const app = express();
+const port = process.env.PORT || 8080
 
 // Multer configuration for handling form data
 const storage = multer.memoryStorage(); // Use memory storage for handling files
@@ -32,4 +33,4 @@ app.post('/parse', upload.fields([
     res.json({ data });
 });
 
-app.listen(300, () => 'server running on port 300');
+app.listen(port, () => 'server running!');
