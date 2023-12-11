@@ -20,7 +20,7 @@ app.post('/parse', upload.fields([
   ]), async (req: Request, res: Response) => {
 
     // Access the file and text data from the request
-    const fileBuffer = req.files?.['file']?.[0]?.buffer;
+    const fileBuffer = (req.files as { [fieldname: string]: Express.Multer.File[] })['file']?.[0]?.buffer;
     const languageData = req.body['language'];
 
     const worker = await createWorker(languageData);
